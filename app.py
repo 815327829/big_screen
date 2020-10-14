@@ -12,10 +12,14 @@ from data_job import JobData
 
 app = Flask(__name__)
 
-
+'''
+定义了3个网址，用同一套模板渲染
+'''
 @app.route('/')
 def index():
+    # 新建一个实例
     data = SourceData()
+    # 传入一个实例，和实例的标题
     return render_template('index.html', form=data, title=data.title)
 
 

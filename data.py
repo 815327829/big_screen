@@ -8,9 +8,12 @@
 class SourceDataDemo:
 
     def __init__(self):
+        # 默认的标题
         self.title = '大数据可视化展板通用模板'
-        self.counter = {'name': '2018年总收入情况', 'value': 12581189}
-        self.counter2 = {'name': '2018年总支出情况', 'value': 3912410}
+        # 两个小的form看板
+        self.counter = {'name': '2018年总收入情况', 'value': 88880000}
+        self.counter2 = {'name': '2018年总支出情况', 'value': 66660000}
+        # 总共是6个图表，数据格式用json字符串，其中第3个图表是有3个小的图表组成的
         self.echart1_data = {
             'title': '行业分布',
             'data': [
@@ -89,6 +92,7 @@ class SourceDataDemo:
                 {"name": "四川", "value": 13},
             ]
         }
+        # 这是一个环状图，有颜色的加上没颜色的正好等于100，半径是外圈直径和内圈直径，猜测是左闭右开
         self.echart6_data = {
             'title': '一线城市情况',
             'data': [
@@ -99,8 +103,9 @@ class SourceDataDemo:
                 {"name": "深圳", "value": 50, "value2": 50, "color": "05", "radius": ['20%', '30%']},
             ]
         }
+        # 这个在哪里用了？？？
         self.map_1_data = {
-            'symbolSize': 100,
+            'symbolSize': 1000,
             'data': [
                 {'name': '海门', 'value': 239},
                 {'name': '鄂尔多斯', 'value': 231},
@@ -113,9 +118,11 @@ class SourceDataDemo:
         data = self.echart1_data
         echart = {
             'title': data.get('title'),
+            # 第一次get获取到的是许多键值对，所以需要对每个键值对再次get
             'xAxis': [i.get("name") for i in data.get('data')],
             'series': [i.get("value") for i in data.get('data')]
         }
+        # 返回的是标题和对应的数据，并没有说用什么方式展现！
         return echart
 
     @property
@@ -207,4 +214,4 @@ class SourceData(SourceDataDemo):
         按照 SourceDataDemo 的格式覆盖数据即可
         """
         super().__init__()
-        self.title = '大数据可视化展板通用模板'
+        self.title = '我是新的标题'
